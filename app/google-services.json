@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1022863519086",
+    "firebase_url": "https://plan-shop.firebaseio.com",
+    "project_id": "plan-shop",
+    "storage_bucket": "plan-shop.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1022863519086:android:b44c54cc34c64c058e657f",
+        "android_client_info": {
+          "package_name": "com.example.planshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1022863519086-4f6kptbsff2494orltt4t7gnk5phqdh4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHFabTtYfLxr5qRUHHCIZhjEVKMQ3kdtc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1022863519086-4f6kptbsff2494orltt4t7gnk5phqdh4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
