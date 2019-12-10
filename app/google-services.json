@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1022863519086-at307lk2ico74kegfvselea4rpdkrlqi.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.planshop",
+            "certificate_hash": "a8569c373be07621b2847d2129ba9960e470e5e8"
+          }
+        },
+        {
           "client_id": "1022863519086-4f6kptbsff2494orltt4t7gnk5phqdh4.apps.googleusercontent.com",
           "client_type": 3
         }
