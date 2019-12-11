@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <font
+        android:font="@font/indigo_daisy"
+        android:fontStyle="normal"
+        android:fontWeight="400"    ></font>
+
+
+    <font
+        android:font="@font/comixno_bold"
+        android:fontStyle="normal"
+        android:fontWeight="400"    ></font>
+
+    <font
+        android:font="@font/comixno2clm_medium_webfont"
+        android:fontStyle="normal"
+        android:fontWeight="400"    ></font>
+
+    <font
+        android:font="@font/trashimclm_bold_webfont"
+        android:fontStyle="normal"
+        android:fontWeight="400"    ></font>
+
+    <font
+        android:font="@font/yehudaclm_bold_webfont"
+        android:fontStyle="normal"
+        android:fontWeight="400"    ></font>
+
+    <font
+        android:font="@font/yehudaclm_light_webfont"
+        android:fontStyle="normal"
+        android:fontWeight="400"    ></font>
+
+</font-family>
