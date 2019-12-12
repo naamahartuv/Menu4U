@@ -1,12 +1,19 @@
 package com.example.planshop;
+
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -15,7 +22,7 @@ import com.google.firebase.database.FirebaseDatabase;
 public class signUp extends AppCompatActivity {
 
     private FirebaseAuth users;
-    EditText txtname, txtLastName, txtEmail, txtPassword,txtConfirm;
+    EditText txtname, txtLastName, txtEmail, txtPassword, txtConfirm;
     Button create;
     DatabaseReference reff;
     Member member;
@@ -24,42 +31,119 @@ public class signUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        // taking FirebaseAuth instance
         users = FirebaseAuth.getInstance();
 
-
-        txtname = (EditText)findViewById(R.id.editFirstName);
-        txtLastName = (EditText)findViewById(R.id.editLastName);
-        txtEmail = (EditText)findViewById(R.id.editEmail);
-        txtPassword = (EditText)findViewById(R.id.editPassword);
-        txtConfirm = (EditText)findViewById(R.id.editConfirm);
-
-        users.createUserWithEmailAndPassword(txtEmail.toString(),txtPassword.toString());
-        //sign in with passwort
+        // initialising all views through id defined above
+        txtname = (EditText) findViewById(R.id.editFirstName);
+        txtLastName = (EditText) findViewById(R.id.editLastName);
+        txtEmail = (EditText) findViewById(R.id.editEmail);
+        txtPassword = (EditText) findViewById(R.id.editPassword);
+        txtConfirm = (EditText) findViewById(R.id.editConfirm);
         create = (Button) findViewById(R.id.create);
-        member = new Member();
 
 
-        reff = FirebaseDatabase.getInstance().getReference().child("Member");
 
-        create.setOnClickListener(new View.OnClickListener(){
+        create.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                member.setPassword(txtPassword.getText().toString().trim());
-                member.setName(txtname.getText().toString().trim());
-                member.setLastName(txtLastName.getText().toString().trim());
-                member.setEmail(txtEmail.getText().toString().trim());
-
-                reff.child("test").push();
-                reff.push().setValue(member);
-                Toast.makeText(signUp.this, "Data inserted sucessfully", Toast.LENGTH_LONG).show();
-
+            public void onClick(View v) {
+                registerNewUser();
             }
         });
+    }
+
+    private void registerNewUser() {
+        // Take the value of two edit texts in Strings
+        String email, password;
+        email = txtEmail.getText().toString();
+        password = txtPassword.getText().toString();
 
 
+        // Validations for input email and password
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter email!!",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter password!!",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
 
-//        FirebaseAuth.setAndroidContext(this);
-//        users = new FirebaseAuth("https://plan-shop.firebaseio.com/");
+        // create new user or register new user
+        users.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            reff = FirebaseDatabase.getInstance().getReference().child("Member");
+                            member = new Member();
+                            member.setPassword(txtPassword.getText().toString().trim());
+                            member.setName(txtname.getText().toString().trim());
+                            member.setLastName(txtLastName.getText().toString().trim());
+                            member.setEmail(txtEmail.getText().toString().trim());
+
+                            reff.child("test").push();
+                            reff.push().setValue(member);
+
+                            Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+                            Intent log = new Intent(signUp.this, ActivitiesMenu.class);
+                            startActivity(log);
+
+                        }
+                        else {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Registration failed!!"
+                                            + " Please try again",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    }
+                });
+
 
     }
 }
+
+
+//        users.createUserWithEmailAndPassword(txtEmail.toString(),txtPassword.toString());
+//        //sign in with password
+//        create = (Button) findViewById(R.id.create);
+//
+//
+//
+//
+//        member = new Member();
+//
+//
+//        reff = FirebaseDatabase.getInstance().getReference().child("Member");
+//
+//        create.setOnClickListener(new View.OnClickListener(){
+//            @Override
+//            public void onClick(View view){
+//                member.setPassword(txtPassword.getText().toString().trim());
+//                member.setName(txtname.getText().toString().trim());
+//                member.setLastName(txtLastName.getText().toString().trim());
+//                member.setEmail(txtEmail.getText().toString().trim());
+//
+//                reff.child("test").push();
+//                reff.push().setValue(member);
+//                Toast.makeText(signUp.this, "Data inserted sucessfully", Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
+//
+//
+//
+////        FirebaseAuth.setAndroidContext(this);
+////        users = new FirebaseAuth("https://plan-shop.firebaseio.com/");
+//
+//    }
