@@ -34,6 +34,7 @@ public class signUp extends AppCompatActivity {
         txtConfirm = (EditText)findViewById(R.id.editConfirm);
 
         users.createUserWithEmailAndPassword(txtEmail.toString(),txtPassword.toString());
+        //sign in with passwort
         create = (Button) findViewById(R.id.create);
         member = new Member();
 
