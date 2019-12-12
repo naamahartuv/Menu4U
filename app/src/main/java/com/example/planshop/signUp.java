@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class signUp extends AppCompatActivity {
 
-//    private FirebaseAuth users;
+    private FirebaseAuth users;
     EditText txtname, txtLastName, txtEmail, txtPassword,txtConfirm;
     Button create;
     DatabaseReference reff;
@@ -24,7 +24,8 @@ public class signUp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-//        users = FirebaseAuth.getInstance();
+        users = FirebaseAuth.getInstance();
+
 
         txtname = (EditText)findViewById(R.id.editFirstName);
         txtLastName = (EditText)findViewById(R.id.editLastName);
@@ -32,6 +33,7 @@ public class signUp extends AppCompatActivity {
         txtPassword = (EditText)findViewById(R.id.editPassword);
         txtConfirm = (EditText)findViewById(R.id.editConfirm);
 
+        users.createUserWithEmailAndPassword(txtEmail.toString(),txtPassword.toString());
         create = (Button) findViewById(R.id.create);
         member = new Member();
 
