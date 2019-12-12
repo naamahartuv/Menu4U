@@ -19,19 +19,19 @@
         app:layout_constraintVertical_bias="0.066" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/editMainEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:ems="10"
         android:hint="@string/email"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
-        app:layout_constraintStart_toStartOf="@+id/editText3"
+        app:layout_constraintBottom_toTopOf="@+id/editMainPass"
+        app:layout_constraintStart_toStartOf="@+id/editMainPass"
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/editMainPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="232dp"
@@ -54,7 +54,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/editMainPass" />
 
     <Button
         android:id="@+id/button2"
