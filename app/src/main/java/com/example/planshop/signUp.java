@@ -14,7 +14,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class signUp extends AppCompatActivity {
 
-    private FirebaseAuth users;
+//    private FirebaseAuth users;
     EditText txtname, txtLastName, txtEmail, txtPassword,txtConfirm;
     Button create;
     DatabaseReference reff;
