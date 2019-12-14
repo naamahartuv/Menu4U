@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.editMainEmail);
         txtPassword = findViewById(R.id.editMainPass);
 
-        String email, password;
+        final String email, password;
         email = txtEmail.getText().toString();
         password = txtPassword.getText().toString();
 
@@ -78,14 +78,26 @@ public class MainActivity extends AppCompatActivity {
                                     @NonNull Task<AuthResult> task)
                             {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(getApplicationContext(),
-                                            "Login successful!!",
-                                            Toast.LENGTH_LONG)
-                                            .show();
+                                    if(email.equals("yaelhava2@gmail.com") ||
+                                            email.equals("naama.hartuv@gmail.com") ||
+                                            email.equals("michalkin9@gmail.com")){
+                                        Toast.makeText(getApplicationContext(),
+                                                "Hello ADMIN",
+                                                Toast.LENGTH_LONG)
+                                                .show();
+                                        Intent intent = new Intent(MainActivity.this, GeneralRecipes.class);
+                                        startActivity(intent);
+                                    }
+                                    else {
+                                        Toast.makeText(getApplicationContext(),
+                                                "Login successful!!",
+                                                Toast.LENGTH_LONG)
+                                                .show();
 
-                                    // if sign-in is successful
-                                    Intent intent = new Intent(MainActivity.this, ActivitiesMenu.class);
-                                    startActivity(intent);
+                                        // if sign-in is successful
+                                        Intent intent = new Intent(MainActivity.this, ActivitiesMenu.class);
+                                        startActivity(intent);
+                                    }
                                 }
 
                                 else {
