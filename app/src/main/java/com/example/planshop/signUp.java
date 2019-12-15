@@ -63,14 +63,14 @@ public class signUp extends AppCompatActivity {
         // Validations for input email and password
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter email!!",
+                    "Please enter email",
                     Toast.LENGTH_LONG)
                     .show();
             return;
         }
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter password!!",
+                    "Please enter password",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -101,7 +101,7 @@ public class signUp extends AppCompatActivity {
                         else {
                             Toast.makeText(
                                     getApplicationContext(),
-                                    "Registration failed!!"
+                                    "Registration failed!"
                                             + " Please try again",
                                     Toast.LENGTH_LONG)
                                     .show();
@@ -112,38 +112,3 @@ public class signUp extends AppCompatActivity {
 
     }
 }
-
-
-//        users.createUserWithEmailAndPassword(txtEmail.toString(),txtPassword.toString());
-//        //sign in with password
-//        create = (Button) findViewById(R.id.create);
-//
-//
-//
-//
-//        member = new Member();
-//
-//
-//        reff = FirebaseDatabase.getInstance().getReference().child("Member");
-//
-//        create.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View view){
-//                member.setPassword(txtPassword.getText().toString().trim());
-//                member.setName(txtname.getText().toString().trim());
-//                member.setLastName(txtLastName.getText().toString().trim());
-//                member.setEmail(txtEmail.getText().toString().trim());
-//
-//                reff.child("test").push();
-//                reff.push().setValue(member);
-//                Toast.makeText(signUp.this, "Data inserted sucessfully", Toast.LENGTH_LONG).show();
-//
-//            }
-//        });
-//
-//
-//
-////        FirebaseAuth.setAndroidContext(this);
-////        users = new FirebaseAuth("https://plan-shop.firebaseio.com/");
-//
-//    }

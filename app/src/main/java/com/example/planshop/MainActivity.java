@@ -27,8 +27,6 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
 
-//    private FirebaseDatabase mDatabase;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         // validations for input email and password
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter email!!",
+                    "Please enter email",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(),
-                    "Please enter password!!",
+                    "Please enter password",
                     Toast.LENGTH_LONG)
                     .show();
             return;
@@ -90,11 +88,10 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                     else {
                                         Toast.makeText(getApplicationContext(),
-                                                "Login successful!!",
+                                                "Login successful!",
                                                 Toast.LENGTH_LONG)
                                                 .show();
 
-                                        // if sign-in is successful
                                         Intent intent = new Intent(MainActivity.this, ActivitiesMenu.class);
                                         startActivity(intent);
                                     }
@@ -114,36 +111,5 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-
-
-
-
-
 }
 
-
-
-//        mDatabase = FirebaseDatabase.getInstance();
-//
-//        String mail = txtEmail.getText().toString();
-//        final String passw = txtPassword.getText().toString();
-//        final DatabaseReference myRef = mDatabase.getReference().child("Member");
-//        myRef.orderByChild("email").equalTo(mail).addValueEventListener(new ValueEventListener(){
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot){
-//                if(dataSnapshot.exists()){
-//                    if()
-//                    Toast.makeText(getApplicationContext(),"PRESENT",Toast.LENGTH_LONG).show();
-//
-//
-//
-//
-//                    //kan ovdim
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//            }
-//        });
