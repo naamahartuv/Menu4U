@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/indigo_daisy"
         android:text="General recipe stock"
-        android:textColor="#009688"
+        android:textColor="@color/colorMain"
         android:textSize="58sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

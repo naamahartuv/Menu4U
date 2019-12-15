@@ -15,7 +15,7 @@
         android:layout_marginEnd="8dp"
         android:fontFamily="@font/indigo_daisy"
         android:text="My recipes"
-        android:textColor="#009688"
+        android:textColor="@color/colorMain"
         android:textSize="67sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.405"
