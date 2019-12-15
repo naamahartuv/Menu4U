@@ -22,10 +22,10 @@ import com.google.firebase.database.FirebaseDatabase;
 public class signUp extends AppCompatActivity {
 
     private FirebaseAuth users;
-    EditText txtname, txtLastName, txtEmail, txtPassword, txtConfirm;
-    Button create;
-    DatabaseReference reff;
-    Member member;
+    private EditText txtname, txtLastName, txtEmail, txtPassword, txtConfirm;
+    private Button create;
+    private DatabaseReference reff;
+    private Member member;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
