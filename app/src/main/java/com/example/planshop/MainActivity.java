@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.editMainPass);
 
 
+
+
+
+
         final String email, password;
         email = txtEmail.getText().toString();
         password = txtPassword.getText().toString();
@@ -81,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                                                 "Hello ADMIN",
                                                 Toast.LENGTH_LONG)
                                                 .show();
-                                        Intent intent = new Intent(MainActivity.this, GeneralRecipes.class);
+                                        Intent intent = new Intent(MainActivity.this, ActivitiesMenu.class);
                                         startActivity(intent);
                                     }
                                     else {
@@ -90,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
                                                 Toast.LENGTH_LONG)
                                                 .show();
 
-                                        Intent intent = new Intent(MainActivity.this, ActivitiesMenu.class);
+                                        Intent intent = new Intent(MainActivity.this, UserEventList.class);
                                         startActivity(intent);
                                     }
                                 }
