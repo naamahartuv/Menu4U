@@ -29,6 +29,7 @@ public class signUp extends AppCompatActivity  {
     private Button create;
     private DatabaseReference reff;
     private Member member;
+    private Admin admin;
 
     private Spinner spinner;
     private Button btnSubmit;
@@ -50,7 +51,7 @@ public class signUp extends AppCompatActivity  {
         txtConfirm = (EditText) findViewById(R.id.editConfirm);
         create = (Button) findViewById(R.id.create);
 
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.account_type, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -59,32 +60,29 @@ public class signUp extends AppCompatActivity  {
 
 
 
-//yael
-//        String[] account = {"Creat", "Participate"};
-//        Spinner s = (Spinner) findViewById(R.id.spinner);
-//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item);
-//        s.setAdapter(adapter);
-
         //addListenerOnSpinnerItemSelection();
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerNewUser();
+                if(spinner.getSelectedItem().toString().equals("Participate")){
+                    registerNewUser();
+                }
+                else if(spinner.getSelectedItem().toString().equals("Create")){
+                    registerNewAdmin();
+                }
+
             }
         });
     }
-//
-//    public void addListenerOnSpinnerItemSelection() {
-//        spinner = (Spinner) findViewById(R.id.spinner);
-//        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-//    }
+
 
     private void registerNewUser() {
         // Take the value of two edit texts in Strings
         String email, password;
         email = txtEmail.getText().toString();
         password = txtPassword.getText().toString();
+
 
 
         // Validations for input email and password
@@ -122,7 +120,7 @@ public class signUp extends AppCompatActivity  {
                             reff.push().setValue(member);
 
                             Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
-                            Intent log = new Intent(signUp.this, ActivitiesMenu.class);
+                            Intent log = new Intent(signUp.this, MemberEventList.class);
                             startActivity(log);
 
                         }
@@ -137,6 +135,66 @@ public class signUp extends AppCompatActivity  {
                     }
                 });
 
+
+    }
+
+    private void registerNewAdmin(){
+        // Take the value of two edit texts in Strings
+        String email, password;
+        email = txtEmail.getText().toString();
+        password = txtPassword.getText().toString();
+
+
+
+        // Validations for input email and password
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter email",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter password",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+
+
+        // create new user or register new user
+        users.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            reff = FirebaseDatabase.getInstance().getReference().child("Admin");
+                            admin = new Admin();
+                            admin.setPassword(txtPassword.getText().toString().trim());
+                            admin.setName(txtname.getText().toString().trim());
+                            admin.setLastName(txtLastName.getText().toString().trim());
+                            admin.setEmail(txtEmail.getText().toString().trim());
+
+                            reff.child("test").push();
+                            reff.push().setValue(admin);
+
+                            Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
+                            Intent log = new Intent(signUp.this, ActivitiesMenu.class);
+                            startActivity(log);
+
+                        }
+                        else {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "Registration failed!"
+                                            + " Please try again",
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    }
+                });
 
     }
 }
