@@ -4,9 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -27,6 +30,10 @@ public class signUp extends AppCompatActivity {
     private DatabaseReference reff;
     private Member member;
 
+    private Spinner spinner;
+    private Button btnSubmit;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,7 +50,13 @@ public class signUp extends AppCompatActivity {
         txtConfirm = (EditText) findViewById(R.id.editConfirm);
         create = (Button) findViewById(R.id.create);
 
+//yael
+//        String[] account = {"Creat", "Participate"};
+//        Spinner s = (Spinner) findViewById(R.id.spinner);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item);
+//        s.setAdapter(adapter);
 
+        addListenerOnSpinnerItemSelection();
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,6 +64,11 @@ public class signUp extends AppCompatActivity {
                 registerNewUser();
             }
         });
+    }
+
+    public void addListenerOnSpinnerItemSelection() {
+        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
     }
 
     private void registerNewUser() {
@@ -75,6 +93,7 @@ public class signUp extends AppCompatActivity {
                     .show();
             return;
         }
+
 
         // create new user or register new user
         users.createUserWithEmailAndPassword(email, password)

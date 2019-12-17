@@ -7,28 +7,16 @@
     tools:context=".ActivitiesMenu">
 
     <Button
-        android:id="@+id/myEvents3"
-        android:layout_width="208dp"
-        android:layout_height="86dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/colorAccent"
-        android:fontFamily="@font/comixno2clm_medium_webfont"
-        android:text="סל קניות"
-        android:textSize="27sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/myEvents2" />
-
-    <Button
         android:id="@+id/myEvents2"
         android:layout_width="208dp"
         android:layout_height="86dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="60dp"
         android:backgroundTint="@color/colorAccent"
         android:fontFamily="@font/comixno2clm_medium_webfont"
         android:text="המתכונים שלי"
         android:textSize="27sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/myEvents" />
 
@@ -52,12 +40,13 @@
         android:id="@+id/myEvents"
         android:layout_width="208dp"
         android:layout_height="86dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="108dp"
         android:backgroundTint="@color/colorAccent"
         android:fontFamily="@font/comixno2clm_medium_webfont"
         android:text="האירועים שלי"
         android:textSize="27sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 </androidx.constraintlayout.widget.ConstraintLayout>
