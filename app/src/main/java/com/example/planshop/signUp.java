@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
-public class signUp extends AppCompatActivity {
+public class signUp extends AppCompatActivity  {
 
     private FirebaseAuth users;
     private EditText txtname, txtLastName, txtEmail, txtPassword, txtConfirm;
@@ -50,13 +50,22 @@ public class signUp extends AppCompatActivity {
         txtConfirm = (EditText) findViewById(R.id.editConfirm);
         create = (Button) findViewById(R.id.create);
 
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.account_type, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+
+
+
+
 //yael
 //        String[] account = {"Creat", "Participate"};
 //        Spinner s = (Spinner) findViewById(R.id.spinner);
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_dropdown_item);
 //        s.setAdapter(adapter);
 
-        addListenerOnSpinnerItemSelection();
+        //addListenerOnSpinnerItemSelection();
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,11 +74,11 @@ public class signUp extends AppCompatActivity {
             }
         });
     }
-
-    public void addListenerOnSpinnerItemSelection() {
-        spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
-    }
+//
+//    public void addListenerOnSpinnerItemSelection() {
+//        spinner = (Spinner) findViewById(R.id.spinner);
+//        spinner.setOnItemSelectedListener(new CustomOnItemSelectedListener());
+//    }
 
     private void registerNewUser() {
         // Take the value of two edit texts in Strings
