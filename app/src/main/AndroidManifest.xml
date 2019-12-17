@@ -10,9 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MemberEventList"></activity>
+        <activity android:name=".UserEventList"></activity>
         <activity android:name=".AddRecipe" />
-        <activity android:name=".GeneralRecipes" />
         <activity android:name=".ActivitiesMenu" />
         <activity android:name=".MyRecipes" />
         <activity android:name=".signUp" />

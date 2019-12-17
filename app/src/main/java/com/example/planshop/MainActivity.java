@@ -1,13 +1,11 @@
 package com.example.planshop;
 
 import android.content.Intent;
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -15,7 +13,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
@@ -26,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
+    private DatabaseReference reff;
 
 
     @Override
@@ -46,9 +44,11 @@ public class MainActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.editMainEmail);
         txtPassword = findViewById(R.id.editMainPass);
 
+
         final String email, password;
         email = txtEmail.getText().toString();
         password = txtPassword.getText().toString();
+
 
         // validations for input email and password
         if (TextUtils.isEmpty(email)) {
@@ -76,9 +76,7 @@ public class MainActivity extends AppCompatActivity {
                                     @NonNull Task<AuthResult> task)
                             {
                                 if (task.isSuccessful()) {
-                                    if(email.equals("yaelhava2@gmail.com") ||
-                                            email.equals("naama.hartuv@gmail.com") ||
-                                            email.equals("michalkin9@gmail.com")){
+                                    if(true){////////////////////////////////////////////////////////////////////////////
                                         Toast.makeText(getApplicationContext(),
                                                 "Hello ADMIN",
                                                 Toast.LENGTH_LONG)
