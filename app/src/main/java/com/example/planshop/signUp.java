@@ -30,7 +30,6 @@ public class signUp extends AppCompatActivity  {
     private DatabaseReference reff;
     private User user;
     private Boolean txtIsAdmin;
-
     private Spinner spinner;
     private Button btnSubmit;
 

@@ -11,9 +11,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import androidx.annotation.NonNull;
@@ -25,8 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
     private DatabaseReference reff;
-
-    String TAG = "MainActivity";
+    private String TAG = "MainActivity";
 
 
     @Override
@@ -46,20 +47,6 @@ public class MainActivity extends AppCompatActivity {
         // initialising all views through id defined above
         txtEmail = findViewById(R.id.editMainEmail);
         txtPassword = findViewById(R.id.editMainPass);
-
-
-        ValueEventListener userListener = new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                User user = dataSnapshot.getValue(User.class);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
-            }
-        };
-
 
         final String email, password;
         email = txtEmail.getText().toString();
@@ -82,35 +69,19 @@ public class MainActivity extends AppCompatActivity {
                     .show();
             return;
         }
-
         // signin existing user
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(
                         new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(
-                                    @NonNull Task<AuthResult> task)
-                            {
+                                    @NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    if(true){////////////////////////////////////////////////////////////////////////////
-                                        Toast.makeText(getApplicationContext(),
-                                                "Hello ADMIN",
-                                                Toast.LENGTH_LONG)
-                                                .show();
-                                        Intent intent = new Intent(MainActivity.this, ActivitiesMenu.class);
-                                        startActivity(intent);
-                                    }
-                                    else {
-                                        Toast.makeText(getApplicationContext(),
-                                                "Login successful!",
-                                                Toast.LENGTH_LONG)
-                                                .show();
+                                    reff = FirebaseDatabase.getInstance().getReference().child("users").child(task.getResult().getUser().getUid());
 
-                                        Intent intent = new Intent(MainActivity.this, UserEventList.class);
-                                        startActivity(intent);
-                                    }
+                                    signInSuccessful(reff);
+
                                 }
-
                                 else {
 
                                     // sign-in failed
@@ -118,12 +89,38 @@ public class MainActivity extends AppCompatActivity {
                                             "Login failed!!",
                                             Toast.LENGTH_LONG)
                                             .show();
-
                                 }
                             }
                         });
+    }
 
+
+    private void signInSuccessful(DatabaseReference reff) {
+        ValueEventListener userListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                User user = dataSnapshot.getValue(User.class);
+
+                if (user.getAdmin()) {
+                    Toast.makeText(getApplicationContext(), "Hello ADMIN", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(MainActivity.this, ActivitiesMenu.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Login successful!", Toast.LENGTH_LONG).show();
+
+                    Intent intent = new Intent(MainActivity.this, UserEventList.class);
+                    startActivity(intent);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.w(TAG, "loadUser:onCancelled", databaseError.toException());
+            }
+        };
+        reff.addListenerForSingleValueEvent(userListener);
 
     }
 }
-
