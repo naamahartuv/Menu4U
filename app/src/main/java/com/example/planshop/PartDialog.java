@@ -4,9 +4,11 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -26,10 +28,12 @@ public class PartDialog extends AppCompatDialogFragment {
 
             }
         }).setPositiveButton("ok", new DialogInterface.OnClickListener() {
+
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String email = editTextPart.getText().toString();
                 listener.applyText(email);
+                Log.d("naama","error in the ok button");
             }
         });
         editTextPart = view.findViewById(R.id.edit_add_member);
@@ -51,5 +55,5 @@ public class PartDialog extends AppCompatDialogFragment {
     public interface PartDialogListener{
         void applyText(String email);
 
-    }
+    }///////////////כאן כנראה שנופל, צריך לעשות בדיקה
 }

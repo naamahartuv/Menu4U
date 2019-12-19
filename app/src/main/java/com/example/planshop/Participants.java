@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Participants {
     private ArrayList<User> eventUsers;
-
     public Participants(){
 
     }
