@@ -133,7 +133,7 @@ public class signUp extends AppCompatActivity  {
 
                                     } else {
                                         Toast.makeText(getApplicationContext(), "Registration successful!", Toast.LENGTH_LONG).show();
-                                        Intent log = new Intent(signUp.this, UserEventList.class);
+                                        Intent log = new Intent(signUp.this, MemberEventList.class);
                                         startActivity(log);
 
                                     }

@@ -12,10 +12,10 @@
         android:theme="@style/AppTheme">
         <activity android:name=".AddEvent"></activity>
         <activity android:name=".AdminEventList" />
-        <activity android:name=".UserEventList" />
+        <activity android:name=".MemberEventList" />
         <activity android:name=".AddRecipe" />
         <activity android:name=".ActivitiesMenu" />
-        <activity android:name=".MyRecipes" />
+        <activity android:name=".AdminRecipes" />
         <activity android:name=".signUp" />
         <activity android:name=".MainActivity">
             <intent-filter>

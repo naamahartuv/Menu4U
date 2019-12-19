@@ -1,11 +1,22 @@
 package com.example.planshop;
 
+import androidx.annotation.NonNull;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 public class User {
 
         private String firstName;
         private String lastName;
         private String Email;
         private Boolean isAdmin;
+        private DatabaseReference ref;
+        private FirebaseAuth mAuth;
 
         public User(){
 
@@ -15,6 +26,31 @@ public class User {
             this.lastName = lastName;
             this.Email = email;
             this.isAdmin = isAdmin;
+        }
+
+        public User(final String email){
+
+            ref = FirebaseDatabase.getInstance().getReference().child("users");
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot data: dataSnapshot.getChildren()){
+                        if (data.child(email).exists()){
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+
+
+
+
+
         }
 
         public String getFirstName() {

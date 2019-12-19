@@ -20,7 +20,7 @@ public class ActivitiesMenu extends AppCompatActivity {
     }
 
     public void myRecipes (View view){
-        Intent intent = new Intent(this, MyRecipes.class);
+        Intent intent = new Intent(this, AdminRecipes.class);
         startActivity(intent);
     }
 }
