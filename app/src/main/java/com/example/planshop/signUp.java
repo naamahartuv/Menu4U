@@ -33,7 +33,8 @@ public class signUp extends AppCompatActivity  {
     private Spinner spinner;
     private Button btnSubmit;
 
-
+//add a error for password
+//add for invalid email
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
