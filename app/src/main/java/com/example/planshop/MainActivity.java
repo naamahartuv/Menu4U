@@ -76,7 +76,8 @@ public class MainActivity extends AppCompatActivity {
                             public void onComplete(
                                     @NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    reff = FirebaseDatabase.getInstance().getReference().child("users").child(task.getResult().getUser().getUid());
+                                    reff = FirebaseDatabase.getInstance().getReference().child("users")
+                                            .child(task.getResult().getUser().getUid());
 
                                     signInSuccessful(reff);
 

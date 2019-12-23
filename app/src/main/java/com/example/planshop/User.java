@@ -15,8 +15,6 @@ public class User {
         private String lastName;
         private String Email;
         private Boolean isAdmin;
-        private DatabaseReference ref;
-        private FirebaseAuth mAuth;
 
         public User(){
 
@@ -28,29 +26,8 @@ public class User {
             this.isAdmin = isAdmin;
         }
 
-        public User(final String email){
-
-            ref = FirebaseDatabase.getInstance().getReference().child("users");
-            ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    for (DataSnapshot data: dataSnapshot.getChildren()){
-                        if (data.child(email).exists()){
-
-                        }
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-
-
-
-
+        public User(String email){
+            this.Email = email;
         }
 
 
@@ -85,4 +62,11 @@ public class User {
     public void setAdmin(Boolean admin) {
         isAdmin = admin;
     }
+
+    public String toString(){
+            return "" + this.Email;
+    }
+
 }
+
+

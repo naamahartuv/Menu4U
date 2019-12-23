@@ -32,8 +32,10 @@ public class PartDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String email = editTextPart.getText().toString();
-                listener.applyText(email);
+
                 Log.d("naama","error in the ok button");
+
+                listener.applyText(email);
             }
         });
         editTextPart = view.findViewById(R.id.edit_add_member);
@@ -55,5 +57,5 @@ public class PartDialog extends AppCompatDialogFragment {
     public interface PartDialogListener{
         void applyText(String email);
 
-    }///////////////כאן כנראה שנופל, צריך לעשות בדיקה
+    }
 }
