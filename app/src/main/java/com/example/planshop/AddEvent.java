@@ -3,6 +3,7 @@ package com.example.planshop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -45,6 +46,11 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         mAuth = FirebaseAuth.getInstance();
         participants = new Participants();
 
+    }
+
+    public void addEvent(View view) {
+        Intent event = new Intent(this, AdminEventList.class);
+        startActivity(event);
     }
 
     public void openDialog(){
