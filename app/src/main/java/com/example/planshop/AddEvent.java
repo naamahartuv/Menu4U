@@ -70,8 +70,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
             }
         });
 
-
-
     }
 
     public void openDialog(){

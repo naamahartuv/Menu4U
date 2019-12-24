@@ -17,32 +17,30 @@ public class User {
         private String lastName;
         private String Email;
         private Boolean isAdmin;
-        private ArrayList<Event> events;
+        private ArrayList<String> eventsUid;
 
-        public User(){
 
-        }
         public User(String firstName,String lastName,String email,Boolean isAdmin){
             this.firstName = firstName;
             this.lastName = lastName;
             this.Email = email;
             this.isAdmin = isAdmin;
-            this.events = new ArrayList<Event>();
+            this.eventsUid = new ArrayList<String>();
         }
 
         public User(String email){
             this.Email = email;
         }
 
-    public ArrayList<Event> getEvents() {
-        return events;
+         public ArrayList<String> getEvents() {
+        return eventsUid;
     }
 
-    public void setEvents(Event event) {
-        this.events.add(event);
+         public void setEvents(String event) {
+        this.eventsUid.add(event);
     }
 
-    public String getFirstName() {
+         public String getFirstName() {
             return firstName;
         }
 
@@ -66,15 +64,15 @@ public class User {
             Email = email;
         }
 
-    public Boolean getAdmin() {
+        public Boolean getAdmin() {
         return isAdmin;
     }
 
-    public void setAdmin(Boolean admin) {
+        public void setAdmin(Boolean admin) {
         isAdmin = admin;
     }
 
-    public String toString(){
+          public String toString(){
             return "" + this.Email;
     }
 

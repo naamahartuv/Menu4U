@@ -33,11 +33,9 @@ public class signUp extends AppCompatActivity  {
     private DatabaseReference reff;
     private User user;
     private Boolean txtIsAdmin;
-    private Spinner spinner;
-    private Button btnSubmit;
 
-//add a error for password
-//add for invalid email
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,9 +62,6 @@ public class signUp extends AppCompatActivity  {
         spinner.setAdapter(adapter);
 
 
-
-
-        //addListenerOnSpinnerItemSelection();
 
         create.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -145,12 +140,6 @@ public class signUp extends AppCompatActivity  {
                                     }
                                 }
                             });
-
-
-
-//                            reff.push().setValue(member);
-
-
 
                         }
                         else {
