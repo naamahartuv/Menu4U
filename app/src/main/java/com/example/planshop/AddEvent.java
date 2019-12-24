@@ -8,25 +8,29 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class AddEvent extends AppCompatActivity implements PartDialog.PartDialogListener  {
 
     private Participants participants;
-    private AdminRecipes recipes;
+    private EventRecipes recipes; // to change to adminRecipies
     private ListView listViewPart;
     private ImageButton addButton;
     private DatabaseReference ref;
     private FirebaseAuth mAuth;
+    private EditText txtEventName;
 
 
 
@@ -46,11 +50,28 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         mAuth = FirebaseAuth.getInstance();
         participants = new Participants();
 
+        txtEventName = (EditText) findViewById(R.id.eventName);
+
     }
 
     public void addEvent(View view) {
-        Intent event = new Intent(this, AdminEventList.class);
-        startActivity(event);
+
+        String uid = mAuth.getUid();
+        ref = FirebaseDatabase.getInstance().getReference().child("Events").child(uid);
+
+        String adminEmail = mAuth.getCurrentUser().getEmail().toString();
+        Event event = new Event(txtEventName.getText().toString(), participants, recipes, adminEmail );
+        ref.setValue(event).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Intent intent = new Intent(AddEvent.this, AdminEventList.class);
+                Toast.makeText(getApplicationContext(), "the event created successfuly", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        });
+
+
+
     }
 
     public void openDialog(){

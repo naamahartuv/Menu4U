@@ -4,9 +4,21 @@ public class Event {
     private String nameEvent;
     private Participants participants;
     private EventRecipes recipes;
+    private String eventAdmin;
 
-    private Event(){
+    public Event(String name,Participants participants, EventRecipes recipes, String eventAdmin){
+        this.eventAdmin = eventAdmin;
+        this.participants = participants;
+        this.recipes = recipes;
+        this.nameEvent = name;
+    }
 
+    public String getEventAdmin() {
+        return eventAdmin;
+    }
+
+    public void setEventAdmin(String eventAdmin) {
+        this.eventAdmin = eventAdmin;
     }
 
     public String getNameEvent() {
@@ -31,5 +43,9 @@ public class Event {
 
     public void setRecipes(EventRecipes recipes) {
         this.recipes = recipes;
+    }
+
+    public String toString(){
+        return this.nameEvent;
     }
 }

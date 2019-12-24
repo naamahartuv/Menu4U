@@ -21,11 +21,14 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 
 public class signUp extends AppCompatActivity  {
 
     private FirebaseAuth mAuth;
     private EditText txtFirstName, txtLastName, txtEmail, txtPassword, txtConfirm;
+    private ArrayList<Event> events;
     private Button create;
     private DatabaseReference reff;
     private User user;
@@ -49,6 +52,7 @@ public class signUp extends AppCompatActivity  {
         txtEmail = (EditText) findViewById(R.id.editEmail);
         txtPassword = (EditText) findViewById(R.id.editPassword);
         txtConfirm = (EditText) findViewById(R.id.editConfirm);
+
 
 
         create = (Button) findViewById(R.id.create);
@@ -116,9 +120,11 @@ public class signUp extends AppCompatActivity  {
                             reff = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
 
                             user = new User(txtFirstName.toString(), txtLastName.toString(), txtEmail.toString(), txtIsAdmin);
+
                             user.setFirstName(txtFirstName.getText().toString().trim());
                             user.setLastName(txtLastName.getText().toString().trim());
                             user.setEmail(txtEmail.getText().toString().trim());
+
 
                             reff.setValue(user).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override

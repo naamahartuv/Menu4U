@@ -9,12 +9,15 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class User {
 
         private String firstName;
         private String lastName;
         private String Email;
         private Boolean isAdmin;
+        private ArrayList<Event> events;
 
         public User(){
 
@@ -24,14 +27,22 @@ public class User {
             this.lastName = lastName;
             this.Email = email;
             this.isAdmin = isAdmin;
+            this.events = new ArrayList<Event>();
         }
 
         public User(String email){
             this.Email = email;
         }
 
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
 
-        public String getFirstName() {
+    public void setEvents(Event event) {
+        this.events.add(event);
+    }
+
+    public String getFirstName() {
             return firstName;
         }
 
