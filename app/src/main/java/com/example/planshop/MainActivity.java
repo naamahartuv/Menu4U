@@ -99,9 +99,9 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                Log.d("jjj1", "Is New User!");
                 User user = dataSnapshot.getValue(User.class);
-
+                Log.d("jjj2", "Is New User!");
                 if (user.getAdmin()) {
                     Toast.makeText(getApplicationContext(), "Hello ADMIN", Toast.LENGTH_LONG).show();
 

@@ -20,6 +20,8 @@ public class User {
     private ArrayList<String> eventsUid;
 
 
+    private User(){ }
+
     public User(String firstName, String lastName, String email, Boolean isAdmin) {
         this.firstName = firstName;
         this.lastName = lastName;

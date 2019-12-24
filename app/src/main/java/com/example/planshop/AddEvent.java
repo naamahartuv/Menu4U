@@ -61,34 +61,33 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         String adminEmail = mAuth.getCurrentUser().getEmail().toString();
         Event event = new Event(txtEventName.getText().toString(), participants, recipes, adminEmail);
 
-        for(int i=0; i< participants.getEventUsers().size() ; i++){
-
-            String email = participants.getEventUsers().get(i).getEmail();
-            mAuth.fetchSignInMethodsForEmail(email)
-                    .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-
-                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
-                            if(isEqual){
-
-                            }
-                        }
-                    });
-        }
+//        for(int i=0; i< participants.getEventUsers().size() ; i++){
+//            String email = participants.getEventUsers().get(i).getEmail();
+//            mAuth.fetchSignInMethodsForEmail(email)
+//                    .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+//                        @Override
+//                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+//                           String name =  mAuth.getCurrentUser().getUid().toString();
+//                            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG);
+//
+////                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
+////                            if(isEqual){
+////
+////                            }
+//                        }
+//                    });
+//        }
 
         ref.setValue(event).addOnSuccessListener(new OnSuccessListener<Void>() {
 
             @Override
             public void onSuccess(Void aVoid) {
 
-
                 Intent intent = new Intent(AddEvent.this, AdminEventList.class);
                 Toast.makeText(getApplicationContext(), "the event created successfuly", Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
-
 
 
     }
