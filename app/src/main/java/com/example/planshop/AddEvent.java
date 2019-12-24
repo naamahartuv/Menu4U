@@ -22,7 +22,7 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
-public class AddEvent extends AppCompatActivity implements PartDialog.PartDialogListener  {
+public class AddEvent extends AppCompatActivity implements PartDialog.PartDialogListener {
 
     private Participants participants;
     private EventRecipes recipes; // to change to adminRecipies
@@ -31,7 +31,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
     private DatabaseReference ref;
     private FirebaseAuth mAuth;
     private EditText txtEventName;
-
 
 
     @Override
@@ -60,87 +59,58 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         ref = FirebaseDatabase.getInstance().getReference().child("Events").child(uid);
 
         String adminEmail = mAuth.getCurrentUser().getEmail().toString();
-        Event event = new Event(txtEventName.getText().toString(), participants, recipes, adminEmail );
+        Event event = new Event(txtEventName.getText().toString(), participants, recipes, adminEmail);
+
+        for(int i=0; i< participants.getEventUsers().size() ; i++){
+
+            String email = participants.getEventUsers().get(i).getEmail();
+            mAuth.fetchSignInMethodsForEmail(email)
+                    .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+
+                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
+                            if(isEqual){
+
+                            }
+                        }
+                    });
+        }
+
         ref.setValue(event).addOnSuccessListener(new OnSuccessListener<Void>() {
+
             @Override
             public void onSuccess(Void aVoid) {
+
+
                 Intent intent = new Intent(AddEvent.this, AdminEventList.class);
                 Toast.makeText(getApplicationContext(), "the event created successfuly", Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
 
+
+
     }
 
-    public void openDialog(){
+    public void openDialog() {
         PartDialog partDialog = new PartDialog();
         partDialog.show(getSupportFragmentManager(), "Part dialog");
     }
 
     @Override
     public void applyText(final String email) {
-        //maybe we need to add it ti our array list of particioants and then add the list itself to the listview????????
+
         final String temp = email;
-//        Toast.makeText(getApplicationContext(), "len" , Toast.LENGTH_LONG).show();
-
-//        ref = FirebaseDatabase.getInstance().getReference().child("users");
-//                .child("FIDlvFyuseVaTbu8EM5uDdGIxAF2");
-
-//////////////////////////לכאן הוא מגיע
-//        checkEmail(email, new OnEmailCheckListener(){
-//            @Override
-//            public void onSucess(boolean isRegistered) {
-//                Log.d("yael2","error in the ok button");
-//
-//                if(isRegistered){
-//                    User user = new User(email);
-//                    participants.getEventUsers().add(user);
-//                    Toast.makeText(getApplicationContext(), "lalalalala" , Toast.LENGTH_LONG).show();
-//                } else {
-//
-//                    Log.d("yael1","error in the ok button");
-//                }
-//
-//            }
-//        });
 
         checkEmail(email);
 
-
-//        ref.addListenerForSingleValueEvent(new ValueEventListener() {
-//
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                Log.d("here!!","error in the ok button");
-//
-////                ref = ref.child(dataSnapshot.);
-//
-//                for (DataSnapshot data: dataSnapshot.getChildren()){
-//                    if (data.child(temp).exists()){
-//                        User user = dataSnapshot.getValue(User.class);
-//
-//                        participants.getEventUsers().add(user);
-//
-//                    }
-//                    else {
-//                        Toast.makeText(getApplicationContext(), "user dosent exist", Toast.LENGTH_LONG).show();
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
-        Log.d("yael4","error in the ok button");
-
+        Log.d("yael4", "error in the ok button");
 
     }
 
 
-
-    public void checkEmail(final String email){
+    public void checkEmail(final String email) {
 
         //check email already exist or not.
         mAuth.fetchSignInMethodsForEmail(email)
@@ -157,14 +127,13 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
                             Log.d("TAG", "Is New User!");
                         } else {
 
-                            Toast.makeText(getApplicationContext(), "User does not exict" , Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), "User does not exict", Toast.LENGTH_LONG).show();
 
                             Log.d("TAG", "Is Old User!");
                         }
-                        Log.d("yael7","error in the ok button");
 
                         ArrayAdapter<User> adapter = new ArrayAdapter<User>(
-                    AddEvent.this,
+                                AddEvent.this,
                                 android.R.layout.simple_list_item_1,
                                 participants.getEventUsers());
 
@@ -180,9 +149,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         });
 
     }
-
-
-
 
 
 }

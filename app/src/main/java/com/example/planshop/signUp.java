@@ -24,7 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.ArrayList;
 
 
-public class signUp extends AppCompatActivity  {
+public class signUp extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
     private EditText txtFirstName, txtLastName, txtEmail, txtPassword, txtConfirm;
@@ -33,7 +33,6 @@ public class signUp extends AppCompatActivity  {
     private DatabaseReference reff;
     private User user;
     private Boolean txtIsAdmin;
-
 
 
     @Override
@@ -52,7 +51,6 @@ public class signUp extends AppCompatActivity  {
         txtConfirm = (EditText) findViewById(R.id.editConfirm);
 
 
-
         create = (Button) findViewById(R.id.create);
 
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
@@ -62,15 +60,13 @@ public class signUp extends AppCompatActivity  {
         spinner.setAdapter(adapter);
 
 
-
         create.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(spinner.getSelectedItem().toString().equals("Participate")){
-                    txtIsAdmin=false;
-                }
-                else if(spinner.getSelectedItem().toString().equals("Create")){
-                    txtIsAdmin=true;
+                if (spinner.getSelectedItem().toString().equals("Participate")) {
+                    txtIsAdmin = false;
+                } else if (spinner.getSelectedItem().toString().equals("Create")) {
+                    txtIsAdmin = true;
                 }
                 registerNewUser();
             }
@@ -83,7 +79,6 @@ public class signUp extends AppCompatActivity  {
         String email, password;
         email = txtEmail.getText().toString();
         password = txtPassword.getText().toString();
-
 
 
         // Validations for input email and password
@@ -141,8 +136,7 @@ public class signUp extends AppCompatActivity  {
                                 }
                             });
 
-                        }
-                        else {
+                        } else {
                             Toast.makeText(
                                     getApplicationContext(),
                                     "Registration failed!"

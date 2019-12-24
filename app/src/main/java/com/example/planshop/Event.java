@@ -6,7 +6,7 @@ public class Event {
     private EventRecipes recipes;
     private String eventAdmin;
 
-    public Event(String name,Participants participants, EventRecipes recipes, String eventAdmin){
+    public Event(String name, Participants participants, EventRecipes recipes, String eventAdmin) {
         this.eventAdmin = eventAdmin;
         this.participants = participants;
         this.recipes = recipes;
@@ -45,7 +45,7 @@ public class Event {
         this.recipes = recipes;
     }
 
-    public String toString(){
+    public String toString() {
         return this.nameEvent;
     }
 }

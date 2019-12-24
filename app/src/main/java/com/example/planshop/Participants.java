@@ -1,12 +1,12 @@
 package com.example.planshop;
 
-import java.util.ArrayList;
+        import java.util.ArrayList;
 
 public class Participants {
     private ArrayList<User> eventUsers;
 
 
-    public Participants(){
+    public Participants() {
         eventUsers = new ArrayList<User>();
     }
 
