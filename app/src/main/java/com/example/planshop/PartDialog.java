@@ -32,10 +32,12 @@ public class PartDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 String email = editTextPart.getText().toString();
+                if(!email.isEmpty()){
+                    listener.applyText(email);
 
-                Log.d("naama","error in the ok button");
+                }
 
-                listener.applyText(email);
+
             }
         });
         editTextPart = view.findViewById(R.id.edit_add_member);

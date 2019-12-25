@@ -67,7 +67,9 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 //                    .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
 //                        @Override
 //                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-//                           String name =  mAuth.getCurrentUser().getUid().toString();
+//                            task.getResult().getSignInMethods().toString();
+//
+//                            String name =  mAuth.getCurrentUser().getUid().toString();
 //                            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG);
 //
 ////                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
@@ -82,6 +84,32 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
             @Override
             public void onSuccess(Void aVoid) {
+                Log.d("TAG3", "onSuccess");
+
+                for(int i=0; i< participants.getEventUsers().size(); i++){
+                    Log.d("TAG3", "for");
+
+                    String email = participants.getEventUsers().get(i).getEmail();
+                    mAuth.fetchSignInMethodsForEmail(email)
+                            .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+                                    Log.d("TAG3", "onComplete");
+
+                                    String lala = task.getResult().getSignInMethods().toString();
+                                    Log.d("TAG3", lala);
+
+                                    Toast.makeText(getApplicationContext(), lala, Toast.LENGTH_LONG).show();
+
+//                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
+//                            if(isEqual){
+//
+//                            }
+                                }
+                            });
+                }
+
+
 
                 Intent intent = new Intent(AddEvent.this, AdminEventList.class);
                 Toast.makeText(getApplicationContext(), "the event created successfuly", Toast.LENGTH_LONG).show();
@@ -103,8 +131,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         final String temp = email;
 
         checkEmail(email);
-
-        Log.d("yael4", "error in the ok button");
 
     }
 
