@@ -26,44 +26,45 @@
         android:layout_width="142dp"
         android:layout_height="40dp"
         android:layout_marginStart="248dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/comixno2clm_medium_webfont"
         android:text="שם האירוע:"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.111"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <EditText
         android:id="@+id/eventName"
-        android:layout_width="304dp"
+        android:layout_width="181dp"
         android:layout_height="47dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.822"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.478"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="131dp"
         android:layout_height="42dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/comixno2clm_medium_webfont"
         android:text="משתתפים:"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.942"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/eventName" />
 
-
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_width="69dp"
-        android:layout_height="56dp"
+        android:layout_width="61dp"
+        android:layout_height="50dp"
         android:layout_marginTop="12dp"
         android:background="#00FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
@@ -88,7 +89,7 @@
         android:id="@+id/partListView"
         android:layout_width="359dp"
         android:layout_height="94dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
@@ -99,9 +100,10 @@
         android:id="@+id/textView5"
         android:layout_width="120dp"
         android:layout_height="42dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:text=":מתכונים"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/comixno2clm_medium_webfont"
+        android:text="מתכונים:"
         android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/partListView" />
@@ -110,9 +112,9 @@
         android:id="@+id/recipesListView"
         android:layout_width="359dp"
         android:layout_height="94dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.634"
+        app:layout_constraintHorizontal_bias="0.692"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
@@ -124,9 +126,8 @@
         android:backgroundTint="@color/colorAccent"
         android:onClick="addEvent"
         android:text="creat event"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton2"
-        app:layout_constraintHorizontal_bias="0.445"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/partListView" />
+        app:layout_constraintTop_toBottomOf="@+id/recipesListView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
