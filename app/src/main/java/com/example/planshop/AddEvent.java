@@ -58,14 +58,14 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
     public void addEvent(View view) {
 
-        String uid = mAuth.getUid();
-        ref = FirebaseDatabase.getInstance().getReference().child("Events").child(uid);
 
+        ref = FirebaseDatabase.getInstance().getReference().child("Events");
+        String uid = ref.push().getKey();
         String adminEmail = mAuth.getCurrentUser().getEmail().toString();
 
         Event event = new Event(txtEventName.getText().toString(), participants, recipes, adminEmail);
 
-        ref.setValue(event).addOnSuccessListener(new OnSuccessListener<Void>() {
+        ref.child(uid).setValue(event).addOnSuccessListener(new OnSuccessListener<Void>() {
 
             @Override
             public void onSuccess(Void aVoid) {
