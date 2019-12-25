@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -26,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
     private DatabaseReference reff;
+    private DatabaseReference reffEvents;
     private String TAG = "MainActivity";
 
 
@@ -81,8 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
                                     signInSuccessful(reff);
 
-                                }
-                                else {
+                                } else {
 
                                     // sign-in failed
                                     Toast.makeText(getApplicationContext(),
@@ -99,6 +100,14 @@ public class MainActivity extends AppCompatActivity {
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//
+
+//                reffEvents = FirebaseDatabase.getInstance().getReference().child("Events").child();
+//
+//                for(DataSnapshot ds : dataSnapshot.getChildren())  {
+//                    ds.child().ge
+//                }
+
                 Log.d("jjj1", "Is New User!");
                 User user = dataSnapshot.getValue(User.class);
                 Log.d("jjj2", "Is New User!");

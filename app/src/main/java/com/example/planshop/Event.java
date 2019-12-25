@@ -1,12 +1,14 @@
 package com.example.planshop;
 
+import java.util.ArrayList;
+
 public class Event {
     private String nameEvent;
-    private Participants participants;
+    private ArrayList<String> participants;
     private EventRecipes recipes;
     private String eventAdmin;
 
-    public Event(String name, Participants participants, EventRecipes recipes, String eventAdmin) {
+    public Event(String name, ArrayList<String> participants, EventRecipes recipes, String eventAdmin) {
         this.eventAdmin = eventAdmin;
         this.participants = participants;
         this.recipes = recipes;
@@ -29,11 +31,11 @@ public class Event {
         this.nameEvent = nameEvent;
     }
 
-    public Participants getParticipants() {
+    public ArrayList<String> getParticipants() {
         return participants;
     }
 
-    public void setParticipants(Participants participants) {
+    public void setParticipants(ArrayList<String> participants) {
         this.participants = participants;
     }
 

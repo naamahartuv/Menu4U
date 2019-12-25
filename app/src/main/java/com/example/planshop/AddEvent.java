@@ -22,13 +22,16 @@ import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
+
 public class AddEvent extends AppCompatActivity implements PartDialog.PartDialogListener {
 
-    private Participants participants;
+    private ArrayList<String> participants;
     private EventRecipes recipes; // to change to adminRecipies
     private ListView listViewPart;
     private ImageButton addButton;
     private DatabaseReference ref;
+    private DatabaseReference reff;
     private FirebaseAuth mAuth;
     private EditText txtEventName;
 
@@ -47,7 +50,7 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
             }
         });
         mAuth = FirebaseAuth.getInstance();
-        participants = new Participants();
+        participants = new ArrayList<String>();
 
         txtEventName = (EditText) findViewById(R.id.eventName);
 
@@ -59,7 +62,9 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         ref = FirebaseDatabase.getInstance().getReference().child("Events").child(uid);
 
         String adminEmail = mAuth.getCurrentUser().getEmail().toString();
+
         Event event = new Event(txtEventName.getText().toString(), participants, recipes, adminEmail);
+
 
 //        for(int i=0; i< participants.getEventUsers().size() ; i++){
 //            String email = participants.getEventUsers().get(i).getEmail();
@@ -86,29 +91,33 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
             public void onSuccess(Void aVoid) {
                 Log.d("TAG3", "onSuccess");
 
-                for(int i=0; i< participants.getEventUsers().size(); i++){
-                    Log.d("TAG3", "for");
 
-                    String email = participants.getEventUsers().get(i).getEmail();
-                    mAuth.fetchSignInMethodsForEmail(email)
-                            .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                                    Log.d("TAG3", "onComplete");
+                String adminUid = mAuth.getCurrentUser().getUid();
+//                reff = FirebaseDatabase.getInstance().getReference().child("users").child(adminUid).child("eventsUid");
+//
 
-                                    String lala = task.getResult().getSignInMethods().toString();
-                                    Log.d("TAG3", lala);
-
-                                    Toast.makeText(getApplicationContext(), lala, Toast.LENGTH_LONG).show();
+//                for(int i=0; i< participants.getEventUsers().size(); i++){
+//                    Log.d("TAG3", "for");
+//
+//                    String email = participants.getEventUsers().get(i).getEmail();
+//                    mAuth.fetchSignInMethodsForEmail(email)
+//                            .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
+//                                @Override
+//                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
+//                                    Log.d("TAG3", "onComplete");
+//
+//                                    String lala = task.getResult().getSignInMethods().toString();
+//                                    Log.d("TAG3", lala);
+//
+//                                    Toast.makeText(getApplicationContext(), lala, Toast.LENGTH_LONG).show();
 
 //                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
 //                            if(isEqual){
 //
 //                            }
-                                }
-                            });
-                }
-
+//                                }
+//                            });
+//                }
 
 
                 Intent intent = new Intent(AddEvent.this, AdminEventList.class);
@@ -143,11 +152,12 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
                     @Override
                     public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
 
-                        boolean isNewUser = !task.getResult().getSignInMethods().isEmpty();
+                        boolean isExist = !task.getResult().getSignInMethods().isEmpty();
 
-                        if (isNewUser) {
-                            User user = new User(email);
-                            participants.getEventUsers().add(user);
+                        if (isExist) {
+//                            User user = new User(email);
+                            participants.add(email);
+//                            participants.getEventUsers().add(user);
 
                             Log.d("TAG", "Is New User!");
                         } else {
@@ -157,10 +167,10 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
                             Log.d("TAG", "Is Old User!");
                         }
 
-                        ArrayAdapter<User> adapter = new ArrayAdapter<User>(
+                        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                                 AddEvent.this,
                                 android.R.layout.simple_list_item_1,
-                                participants.getEventUsers());
+                                participants);
 
                         listViewPart.setAdapter(adapter);
 
