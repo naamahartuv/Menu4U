@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity {
         txtPassword = findViewById(R.id.editMainPass);
 
         final String email, password;
-        email = txtEmail.getText().toString();
-        password = txtPassword.getText().toString();
+        email = txtEmail.getText().toString().trim();
+        password = txtPassword.getText().toString().trim();
 
 
         // validations for input email and password

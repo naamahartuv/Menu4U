@@ -31,7 +31,7 @@ public class PartDialog extends AppCompatDialogFragment {
 
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
-                String email = editTextPart.getText().toString();
+                String email = editTextPart.getText().toString().trim();
                 if(!email.isEmpty()){
                     listener.applyText(email);
 
