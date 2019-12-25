@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText txtEmail, txtPassword;
     private FirebaseAuth mAuth;
     private DatabaseReference reff;
-    private DatabaseReference reffEvents;
+
     private String TAG = "MainActivity";
 
 
@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                                     reff = FirebaseDatabase.getInstance().getReference().child("users")
                                             .child(task.getResult().getUser().getUid());
 
-                                    signInSuccessful(reff);
+                                    signInSuccessful();
 
                                 } else {
 
@@ -96,17 +96,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void signInSuccessful(DatabaseReference reff) {
+    private void signInSuccessful() {
         ValueEventListener userListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 //
-
-//                reffEvents = FirebaseDatabase.getInstance().getReference().child("Events").child();
-//
-//                for(DataSnapshot ds : dataSnapshot.getChildren())  {
-//                    ds.child().ge
-//                }
 
                 Log.d("jjj1", "Is New User!");
                 User user = dataSnapshot.getValue(User.class);

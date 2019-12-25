@@ -8,6 +8,10 @@ public class Event {
     private EventRecipes recipes;
     private String eventAdmin;
 
+    public Event() {
+
+    }
+
     public Event(String name, ArrayList<String> participants, EventRecipes recipes, String eventAdmin) {
         this.eventAdmin = eventAdmin;
         this.participants = participants;

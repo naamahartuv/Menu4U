@@ -34,4 +34,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/plus" />
 
+    <ListView
+        android:id="@+id/adminEventListView"
+        android:layout_width="352dp"
+        android:layout_height="415dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="175dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
