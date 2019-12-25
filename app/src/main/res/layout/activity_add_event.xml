@@ -65,6 +65,7 @@
         android:layout_width="69dp"
         android:layout_height="56dp"
         android:layout_marginTop="12dp"
+        android:background="#00FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintHorizontal_bias="0.876"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,9 +74,10 @@
 
     <ImageButton
         android:id="@+id/imageButton2"
-        android:layout_width="70dp"
+        android:layout_width="79dp"
         android:layout_height="55dp"
         android:layout_marginTop="16dp"
+        android:background="#00FFFFFF"
         app:layout_constraintEnd_toStartOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.914"
         app:layout_constraintStart_toStartOf="parent"
