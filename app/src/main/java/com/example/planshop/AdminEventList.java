@@ -55,9 +55,15 @@ public class AdminEventList extends AppCompatActivity {
                 mAuth = FirebaseAuth.getInstance();
                 String myEmail = mAuth.getCurrentUser().getEmail();
                 System.out.println(myEmail);
+
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
+
+                    System.out.println("here");
+
                     Event event = ds.getValue(Event.class);
+                    System.out.println("here again");
+
 
                     if (event.getEventAdmin().equals(myEmail)) {
                         events.add(event);
