@@ -61,29 +61,10 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
         String uid = mAuth.getUid();
         ref = FirebaseDatabase.getInstance().getReference().child("Events").child(uid);
 
+
         String adminEmail = mAuth.getCurrentUser().getEmail().toString();
 
         Event event = new Event(txtEventName.getText().toString(), participants, recipes, adminEmail);
-
-
-//        for(int i=0; i< participants.getEventUsers().size() ; i++){
-//            String email = participants.getEventUsers().get(i).getEmail();
-//            mAuth.fetchSignInMethodsForEmail(email)
-//                    .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-//                        @Override
-//                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-//                            task.getResult().getSignInMethods().toString();
-//
-//                            String name =  mAuth.getCurrentUser().getUid().toString();
-//                            Toast.makeText(getApplicationContext(), name, Toast.LENGTH_LONG);
-//
-////                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
-////                            if(isEqual){
-////
-////                            }
-//                        }
-//                    });
-//        }
 
         ref.setValue(event).addOnSuccessListener(new OnSuccessListener<Void>() {
 
@@ -93,31 +74,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
 
                 String adminUid = mAuth.getCurrentUser().getUid();
-//                reff = FirebaseDatabase.getInstance().getReference().child("users").child(adminUid).child("eventsUid");
-//
-
-//                for(int i=0; i< participants.getEventUsers().size(); i++){
-//                    Log.d("TAG3", "for");
-//
-//                    String email = participants.getEventUsers().get(i).getEmail();
-//                    mAuth.fetchSignInMethodsForEmail(email)
-//                            .addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-//                                @Override
-//                                public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-//                                    Log.d("TAG3", "onComplete");
-//
-//                                    String lala = task.getResult().getSignInMethods().toString();
-//                                    Log.d("TAG3", lala);
-//
-//                                    Toast.makeText(getApplicationContext(), lala, Toast.LENGTH_LONG).show();
-
-//                            boolean isEqual = !task.getResult().getSignInMethods().isEmpty();
-//                            if(isEqual){
-//
-//                            }
-//                                }
-//                            });
-//                }
 
 
                 Intent intent = new Intent(AddEvent.this, AdminEventList.class);
