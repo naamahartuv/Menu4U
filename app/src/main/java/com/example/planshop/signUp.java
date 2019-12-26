@@ -76,9 +76,12 @@ public class signUp extends AppCompatActivity {
 
     private void registerNewUser() {
         // Take the value of two edit texts in Strings
-        String email, password;
+        String email, password, firstName, lastName, confirm;
         email = txtEmail.getText().toString();
         password = txtPassword.getText().toString();
+        firstName = txtFirstName.getText().toString();
+        lastName = txtLastName.getText().toString();
+        confirm = txtConfirm.getText().toString();
 
 
         // Validations for input email and password
@@ -92,6 +95,28 @@ public class signUp extends AppCompatActivity {
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(getApplicationContext(),
                     "Please enter password",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+
+        if (TextUtils.isEmpty(firstName)) {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter first name",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+        if (TextUtils.isEmpty(lastName)) {
+            Toast.makeText(getApplicationContext(),
+                    "Please enter last name",
+                    Toast.LENGTH_LONG)
+                    .show();
+            return;
+        }
+        if (!password.equals(confirm)) {
+            Toast.makeText(getApplicationContext(),
+                    "The passwords do not match",
                     Toast.LENGTH_LONG)
                     .show();
             return;
