@@ -58,7 +58,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
     public void addEvent(View view) {
 
-
         ref = FirebaseDatabase.getInstance().getReference().child("Events");
         String uid = ref.push().getKey();
         String adminEmail = mAuth.getCurrentUser().getEmail().toString();
@@ -71,10 +70,8 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
             public void onSuccess(Void aVoid) {
                 Log.d("TAG3", "onSuccess");
 
-                String adminUid = mAuth.getCurrentUser().getUid();
-
                 Intent intent = new Intent(AddEvent.this, AdminEventList.class);
-                Toast.makeText(getApplicationContext(), "the event created successfuly", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "The event created successfuly", Toast.LENGTH_LONG).show();
                 startActivity(intent);
             }
         });
@@ -108,9 +105,7 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
                         boolean isExist = !task.getResult().getSignInMethods().isEmpty();
 
                         if (isExist) {
-//                            User user = new User(email);
                             participants.add(email);
-//                            participants.getEventUsers().add(user);
 
                             Log.d("TAG", "Is New User!");
                         } else {

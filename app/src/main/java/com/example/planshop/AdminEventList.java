@@ -31,6 +31,7 @@ public class AdminEventList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_event_list);
+
         events = new ArrayList<Event>();
         listViewAdminEvent = findViewById(R.id.adminEventListView);
         showEventList();
@@ -54,32 +55,19 @@ public class AdminEventList extends AppCompatActivity {
 
                 mAuth = FirebaseAuth.getInstance();
                 String myEmail = mAuth.getCurrentUser().getEmail();
-                System.out.println(myEmail);
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
-
-                    System.out.println("here");
-
                     Event event = ds.getValue(Event.class);
-                    System.out.println("here again");
-
-
                     if (event.getEventAdmin().equals(myEmail)) {
                         events.add(event);
                     } else {
-                        ArrayList<String> participants = event.getParticipants();
-                        for (String email : participants) {
-                            System.out.println(email);
+                        for (String email : event.getParticipants()) {
                             if (email.equals(myEmail)) {
                                 events.add(event);
                             }
                         }
                     }
-
-
-                    System.out.println(event.getParticipants());
-
                 }
 
                 ArrayAdapter<Event> adapter = new ArrayAdapter<Event>(
