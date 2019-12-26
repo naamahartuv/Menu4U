@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background2"
     tools:context=".AddEvent">
 
     <TextView
@@ -126,8 +127,10 @@
         android:backgroundTint="@color/colorAccent"
         android:onClick="addEvent"
         android:text="creat event"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipesListView" />
+        app:layout_constraintTop_toBottomOf="@+id/recipesListView"
+        app:layout_constraintVertical_bias="0.074" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
