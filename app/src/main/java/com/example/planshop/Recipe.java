@@ -1,29 +1,33 @@
 package com.example.planshop;
 
+import java.util.ArrayList;
+
 public class Recipe {
-    private String nameRecipes;
-    private String ingrediends;
-    private String directions;
+    private String recipeName;
+    private ArrayList<String> ingredients;
+    private String directions; //לחשוב אם זה צריך להיות סטרינג או arraylist
+    private String eventAdmin;
 
-    public Recipe(){
+    public Recipe() {
 
     }
 
-    public String getNameRecipes() {
-        return nameRecipes;
+    public ArrayList<String> getIngredients() {
+        return ingredients;
     }
 
-    public void setNameRecipes(String nameRecipes) {
-        this.nameRecipes = nameRecipes;
+    public void setIngredients(ArrayList<String> ingredients) {
+        this.ingredients = ingredients;
     }
 
-    public String getIngrediends() {
-        return ingrediends;
+    public String getRecipeName() {
+        return recipeName;
     }
 
-    public void setIngrediends(String ingrediends) {
-        this.ingrediends = ingrediends;
+    public void setRecipeName(String recipeName) {
+        this.recipeName = recipeName;
     }
+
 
     public String getDirections() {
         return directions;
@@ -31,5 +35,13 @@ public class Recipe {
 
     public void setDirections(String directions) {
         this.directions = directions;
+    }
+
+    public String getEventAdmin() {
+        return eventAdmin;
+    }
+
+    public void setEventAdmin(String eventAdmin) {
+        this.eventAdmin = eventAdmin;
     }
 }
