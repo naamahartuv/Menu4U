@@ -21,12 +21,6 @@ public class AddRecipe extends AppCompatActivity {
     }
 
 
-
-    public void openDialog() {
-        PartDialog partDialog = new PartDialog();
-        partDialog.show(getSupportFragmentManager(), "Part dialog");
-    }
-
     public void creatRecpie(View view) {
         ref = FirebaseDatabase.getInstance().getReference().child("Recipes");
         String uid = ref.push().getKey();

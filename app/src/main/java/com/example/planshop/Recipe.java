@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Recipe {
     private String recipeName;
     private ArrayList<String> ingredients;
-    private String directions; //לחשוב אם זה צריך להיות סטרינג או arraylist
+    private String directions;
     private String eventAdmin;
 
     public Recipe() {
