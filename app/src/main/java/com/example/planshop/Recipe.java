@@ -4,19 +4,28 @@ import java.util.ArrayList;
 
 public class Recipe {
     private String recipeName;
-    private ArrayList<String> ingredients;
+    private String ingredients;
     private String directions;
-    private String eventAdmin;
+    private String recipeAdmin;
+
+
 
     public Recipe() {
 
     }
 
-    public ArrayList<String> getIngredients() {
+    public Recipe(String name, String ing, String dir, String rec){
+        this.recipeName = name;
+        this.directions = dir;
+        this.ingredients = ing;
+        this.recipeAdmin = rec;
+    }
+
+    public String getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(ArrayList<String> ingredients) {
+    public void setIngredients(String ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -37,11 +46,13 @@ public class Recipe {
         this.directions = directions;
     }
 
-    public String getEventAdmin() {
-        return eventAdmin;
+    public String getRecipeAdmin() {
+        return recipeAdmin;
     }
 
-    public void setEventAdmin(String eventAdmin) {
-        this.eventAdmin = eventAdmin;
+    public void setRecipeAdmin(String recipeAdmin) {
+        this.recipeAdmin = recipeAdmin;
     }
+
+
 }

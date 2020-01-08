@@ -26,15 +26,25 @@
         android:id="@+id/floatingActionButton19"
         android:layout_width="101dp"
         android:layout_height="57dp"
-        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
         android:clickable="true"
         android:onClick="addRecipe"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.076"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.91"
+        app:layout_constraintTop_toBottomOf="@+id/listRecipe"
         app:maxImageSize="40dp"
         app:srcCompat="@drawable/plus" />
+
+    <ListView
+        android:id="@+id/listRecipe"
+        android:layout_width="354dp"
+        android:layout_height="401dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     app:fabSize="normal"
 </androidx.constraintlayout.widget.ConstraintLayout>
