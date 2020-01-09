@@ -26,6 +26,7 @@ public class AddRecipe extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_recipe);
+
         recipeName = findViewById(R.id.editText);
         ingredients = findViewById(R.id.editText2);
         directions = findViewById(R.id.editText3);
@@ -42,7 +43,7 @@ public class AddRecipe extends AppCompatActivity {
         String adminEmail = mAuth.getCurrentUser().getEmail().toString();
 
         Recipe recipe = new Recipe(recipeName.getText().toString(), ingredients.getText().toString(),
-                directions.getText().toString(), adminEmail);
+                                     directions.getText().toString(), adminEmail);
 
         ref.child(uid).setValue(recipe).addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override

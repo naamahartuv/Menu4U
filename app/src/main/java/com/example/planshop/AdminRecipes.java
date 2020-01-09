@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -41,22 +42,24 @@ public class AdminRecipes extends AppCompatActivity {
     }
 
     public void showRecipeList() {
-
+        Log.d("TAG4", "showRecipeList");
         refRecipe = FirebaseDatabase.getInstance().getReference("Recipes");
 
         refRecipe.addValueEventListener(new ValueEventListener() {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
+                Log.d("TAG4", "onDataChange");
                 mAuth = FirebaseAuth.getInstance();
                 String myEmail = mAuth.getCurrentUser().getEmail();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-
+                    Log.d("TAG4", "for");
                     Recipe recipe = ds.getValue(Recipe.class);
+                    Log.d("TAG4", "Recipe.class");
                     if (recipe.getRecipeAdmin().equals(myEmail)) {
                         recipes.add(recipe);
+                        Log.d("TAG4", "IF");
                     }
                 }
 

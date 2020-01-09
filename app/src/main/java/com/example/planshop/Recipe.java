@@ -14,11 +14,11 @@ public class Recipe {
 
     }
 
-    public Recipe(String name, String ing, String dir, String rec){
-        this.recipeName = name;
-        this.directions = dir;
-        this.ingredients = ing;
-        this.recipeAdmin = rec;
+    public Recipe(String recipeName, String ingredients, String directions, String recipeAdmin){
+        this.recipeName = recipeName;
+        this.directions = directions;
+        this.ingredients = ingredients;
+        this.recipeAdmin = recipeAdmin;
     }
 
     public String getIngredients() {
@@ -52,6 +52,10 @@ public class Recipe {
 
     public void setRecipeAdmin(String recipeAdmin) {
         this.recipeAdmin = recipeAdmin;
+    }
+
+    public String toString() {
+        return this.recipeName;
     }
 
 
