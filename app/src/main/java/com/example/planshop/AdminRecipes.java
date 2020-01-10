@@ -49,17 +49,13 @@ public class AdminRecipes extends AppCompatActivity {
 
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                Log.d("TAG4", "onDataChange");
                 mAuth = FirebaseAuth.getInstance();
                 String myEmail = mAuth.getCurrentUser().getEmail();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    Log.d("TAG4", "for");
                     Recipe recipe = ds.getValue(Recipe.class);
-                    Log.d("TAG4", "Recipe.class");
                     if (recipe.getRecipeAdmin().equals(myEmail)) {
                         recipes.add(recipe);
-                        Log.d("TAG4", "IF");
                     }
                 }
 
