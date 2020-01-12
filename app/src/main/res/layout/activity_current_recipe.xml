@@ -5,30 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background2"
-    tools:context=".MemberEventList">
+    tools:context=".CurrentRecipe">
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="186dp"
+        android:layout_width="185dp"
         android:layout_height="65dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginEnd="8dp"
-        android:fontFamily="@font/indigo_daisy"
-        android:text="Event list"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/trashimclm_bold_webfont"
         android:textColor="@color/colorAccent"
-        android:textSize="65sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.365"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/memberEventListView"
-        android:layout_width="341dp"
-        android:layout_height="554dp"
-        android:layout_marginTop="12dp"
+    <MultiAutoCompleteTextView
+        android:id="@+id/textRecipe"
+        android:layout_width="315dp"
+        android:layout_height="479dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+

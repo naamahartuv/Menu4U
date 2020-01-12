@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -31,7 +32,7 @@ public class AdminRecipes extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_recipes);
 
-        recipes = new ArrayList<Recipe>();
+
         listViewAdminRecipe = findViewById(R.id.listRecipe);
         showRecipeList();
     }
@@ -50,7 +51,8 @@ public class AdminRecipes extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mAuth = FirebaseAuth.getInstance();
-                String myEmail = mAuth.getCurrentUser().getEmail();
+                final String myEmail = mAuth.getCurrentUser().getEmail();
+                recipes = new ArrayList<Recipe>();
 
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Recipe recipe = ds.getValue(Recipe.class);
@@ -65,6 +67,19 @@ public class AdminRecipes extends AppCompatActivity {
                         recipes);
 
                 listViewAdminRecipe.setAdapter(adapter);
+
+                listViewAdminRecipe.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent intent = new Intent(AdminRecipes.this, CurrentRecipe.class);
+
+                        intent.putExtra("name", recipes.get(i).getRecipeName());
+                        intent.putExtra("ing", recipes.get(i).getIngredients());
+                        intent.putExtra("dir", recipes.get(i).getDirections());
+
+                        startActivity(intent);
+                    }
+                });
 
             }
 

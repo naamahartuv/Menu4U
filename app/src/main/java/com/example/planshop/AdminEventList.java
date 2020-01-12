@@ -32,7 +32,7 @@ public class AdminEventList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_event_list);
 
-        events = new ArrayList<Event>();
+
         listViewAdminEvent = findViewById(R.id.adminEventListView);
         showEventList();
 
@@ -56,6 +56,7 @@ public class AdminEventList extends AppCompatActivity {
                 mAuth = FirebaseAuth.getInstance();
                 String myEmail = mAuth.getCurrentUser().getEmail();
 
+                events = new ArrayList<Event>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
 
                     Event event = ds.getValue(Event.class);

@@ -28,7 +28,7 @@ public class MemberEventList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_event_list);
 
-        events = new ArrayList<Event>();
+
         listViewMemberEvent = findViewById(R.id.memberEventListView);
         showEventList();
     }
@@ -40,6 +40,8 @@ public class MemberEventList extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 mAuth = FirebaseAuth.getInstance();
                 String myEmail = mAuth.getCurrentUser().getEmail();
+
+                events = new ArrayList<Event>();
 
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Event event = ds.getValue(Event.class);
