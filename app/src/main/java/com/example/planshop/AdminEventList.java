@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -77,6 +78,14 @@ public class AdminEventList extends AppCompatActivity {
                         events);
 
                 listViewAdminEvent.setAdapter(adapter);
+
+//                listViewAdminEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//                    @Override
+//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                        Intent intent = new Intent(AdminEventList.this, currentEvent.class);
+//                        intent.putExtra()
+//                    }
+//                });
 
             }
 
