@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.MultiAutoCompleteTextView;
 import android.widget.TextView;
 
 public class CurrentRecipe extends AppCompatActivity {
     private String nameRecipe, ingridients, directions;
-    private TextView title;
-    private MultiAutoCompleteTextView textRecipe;
+    private TextView title,textRecipe;
+
 
 
     @Override
@@ -27,7 +28,8 @@ public class CurrentRecipe extends AppCompatActivity {
         title.setText(nameRecipe);
 
         textRecipe = findViewById((R.id.textRecipe));
-        textRecipe.setText(ingridients + "\n" + directions );//לשנות את הסוג של הטקסט, ולחלק לשניים, לשים כותרות של מתכונים והוראות הכנה.
+        textRecipe.setMovementMethod(new ScrollingMovementMethod());
+        textRecipe.setText("מצרכים:"+"\n"+ingridients + "\n\n" +"הוראות הכנה:"+"\n"+ directions );//לשנות את הסוג של הטקסט, ולחלק לשניים, לשים כותרות של מתכונים והוראות הכנה.
 
     }
 
