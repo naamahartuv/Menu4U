@@ -4,15 +4,14 @@ import java.util.ArrayList;
 
 public class Event {
     private String nameEvent;
-    private ArrayList<String> participants;
-    private EventRecipes recipes;
+    private ArrayList<String> participants, recipes;
     private String eventAdmin;
 
     public Event() {
 
     }
 
-    public Event(String name, ArrayList<String> participants, EventRecipes recipes, String eventAdmin) {
+    public Event(String name, ArrayList<String> participants, ArrayList<String> recipes, String eventAdmin) {
         this.eventAdmin = eventAdmin;
         this.participants = participants;
         this.recipes = recipes;
@@ -43,11 +42,11 @@ public class Event {
         this.participants = participants;
     }
 
-    public EventRecipes getRecipes() {
+    public ArrayList<String> getRecipes() {
         return recipes;
     }
 
-    public void setRecipes(EventRecipes recipes) {
+    public void setRecipes(ArrayList<String> recipes) {
         this.recipes = recipes;
     }
 

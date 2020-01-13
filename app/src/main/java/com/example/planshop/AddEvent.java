@@ -19,19 +19,20 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.SignInMethodQueryResult;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class AddEvent extends AppCompatActivity implements PartDialog.PartDialogListener {
+public class AddEvent extends AppCompatActivity implements PartDialog.PartDialogListener, RecipeDialog.RecipeDialogListener {
 
-    private ArrayList<String> participants;
-    private EventRecipes recipes; // to change to adminRecipies
-    private ListView listViewPart;
-    private ImageButton addButton;
+    private ArrayList<String> participants, recipes;
+    private ListView listViewPart, recipesListView;
+    private ImageButton addButton, recipeButton;
     private DatabaseReference ref;
-    private DatabaseReference reff;
     private FirebaseAuth mAuth;
     private EditText txtEventName;
 
@@ -49,6 +50,16 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
                 openDialog();
             }
         });
+        recipesListView = findViewById(R.id.recipesListView);
+        recipeButton = findViewById(R.id.imageButton2);
+        recipeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog2();
+            }
+        });
+
+
         mAuth = FirebaseAuth.getInstance();
         participants = new ArrayList<String>();
 
@@ -78,6 +89,10 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
 
     }
+    public void openDialog2(){
+        RecipeDialog recipeDialog = new RecipeDialog();
+        recipeDialog.show(getSupportFragmentManager(), "Recipe dialog");
+    }
 
     public void openDialog() {
         PartDialog partDialog = new PartDialog();
@@ -87,7 +102,7 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
     @Override
     public void applyText(final String email) {
 
-        final String temp = email;
+        //final String temp = email;
 
         checkEmail(email);
 
@@ -134,4 +149,36 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
     }
 
 
+    @Override
+    public void applyTexts(final String recipeName) {
+        ref = FirebaseDatabase.getInstance().getReference().child("Recipes");
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String myEmail = mAuth.getCurrentUser().getEmail();
+
+                recipes = new ArrayList<String>();
+
+                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                    Recipe recipe = ds.getValue(Recipe.class);
+                    if(recipe.getRecipeName().equals(recipeName) &&
+                            recipe.getRecipeAdmin().equals(myEmail)){
+                        recipes.add(recipeName);
+                    }
+                }
+
+                ArrayAdapter<String> adapter =new ArrayAdapter<>(
+                        AddEvent.this,
+                        android.R.layout.simple_list_item_1,
+                        recipes
+                );
+                recipesListView.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
 }
