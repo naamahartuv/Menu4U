@@ -20,14 +20,13 @@ import android.widget.Toast;
 
 public class ContactUs extends AppCompatActivity {
     private static final int REQUEST_CALL = 1;
-//    private TextView phonNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact_us);
 
-//        phonNumber = findViewById(R.id.phonNumber);
+
         ImageView imageCall = findViewById(R.id.image_call);
 
         imageCall.setOnClickListener(new View.OnClickListener() {
