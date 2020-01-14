@@ -62,7 +62,7 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
         mAuth = FirebaseAuth.getInstance();
         participants = new ArrayList<String>();
-
+        recipes = new ArrayList<String>();
         txtEventName = (EditText) findViewById(R.id.eventName);
 
     }
@@ -157,7 +157,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 String myEmail = mAuth.getCurrentUser().getEmail();
 
-                recipes = new ArrayList<String>();
 
                 for(DataSnapshot ds : dataSnapshot.getChildren()){
                     Recipe recipe = ds.getValue(Recipe.class);

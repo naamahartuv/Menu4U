@@ -79,13 +79,16 @@ public class AdminEventList extends AppCompatActivity {
 
                 listViewAdminEvent.setAdapter(adapter);
 
-//                listViewAdminEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//                    @Override
-//                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                        Intent intent = new Intent(AdminEventList.this, currentEvent.class);
-//                        intent.putExtra()
-//                    }
-//                });
+                listViewAdminEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent intent = new Intent(AdminEventList.this, currentEvent.class);
+                        intent.putExtra("name", events.get(i).getNameEvent());
+                        intent.putExtra("list", events.get(i).getRecipes());
+
+                        startActivity(intent);
+                    }
+                });
 
             }
 
