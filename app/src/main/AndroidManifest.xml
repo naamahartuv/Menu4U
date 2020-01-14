@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".currentEvent"></activity>
+        <activity android:name=".CurrentEvent"></activity>
         <activity android:name=".CurrentRecipe" />
         <activity android:name=".AddEvent" />
         <activity android:name=".AdminEventList" />

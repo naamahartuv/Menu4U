@@ -36,6 +36,8 @@ public class RecipeDialog extends AppCompatDialogFragment {
                             listener.applyTexts(recipeName);
                         }
 
+
+
                     }
                 });
 

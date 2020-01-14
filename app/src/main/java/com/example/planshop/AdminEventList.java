@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AdminEventList extends AppCompatActivity {
 
@@ -82,7 +80,7 @@ public class AdminEventList extends AppCompatActivity {
                 listViewAdminEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(AdminEventList.this, currentEvent.class);
+                        Intent intent = new Intent(AdminEventList.this, CurrentEvent.class);
                         intent.putExtra("name", events.get(i).getNameEvent());
                         intent.putExtra("list", events.get(i).getRecipes());
 
