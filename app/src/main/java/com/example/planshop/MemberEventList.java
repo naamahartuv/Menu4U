@@ -3,7 +3,10 @@ package com.example.planshop;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -61,6 +64,20 @@ public class MemberEventList extends AppCompatActivity {
                         events);
 
                 listViewMemberEvent.setAdapter(adapter);
+
+                listViewMemberEvent.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                        Intent intent = new Intent(MemberEventList.this, CurrentEvent.class);
+                        intent.putExtra("name", events.get(i).getNameEvent());
+                        intent.putExtra("list", events.get(i).getRecipes());
+                        intent.putExtra("admin", events.get(i).getEventAdmin());
+
+
+                        startActivity(intent);
+                    }
+                });
             }
 
             @Override

@@ -83,6 +83,8 @@ public class AdminEventList extends AppCompatActivity {
                         Intent intent = new Intent(AdminEventList.this, CurrentEvent.class);
                         intent.putExtra("name", events.get(i).getNameEvent());
                         intent.putExtra("list", events.get(i).getRecipes());
+                        intent.putExtra("admin", events.get(i).getEventAdmin());
+
 
                         startActivity(intent);
                     }

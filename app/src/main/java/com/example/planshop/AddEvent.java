@@ -89,7 +89,8 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
 
     }
-    public void openDialog2(){
+
+    public void openDialog2() {
         RecipeDialog recipeDialog = new RecipeDialog();
         recipeDialog.show(getSupportFragmentManager(), "Recipe dialog");
     }
@@ -101,15 +102,6 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
 
     @Override
     public void applyText(final String email) {
-
-        //final String temp = email;
-
-        checkEmail(email);
-
-    }
-
-
-    public void checkEmail(final String email) {
 
         //check email already exist or not.
         mAuth.fetchSignInMethodsForEmail(email)
@@ -149,6 +141,7 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
     }
 
 
+
     @Override
     public void applyTexts(final String recipeName) {
         ref = FirebaseDatabase.getInstance().getReference().child("Recipes");
@@ -158,15 +151,15 @@ public class AddEvent extends AppCompatActivity implements PartDialog.PartDialog
                 String myEmail = mAuth.getCurrentUser().getEmail();
 
 
-                for(DataSnapshot ds : dataSnapshot.getChildren()){
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     Recipe recipe = ds.getValue(Recipe.class);
-                    if(recipe.getRecipeName().equals(recipeName) &&
-                            recipe.getRecipeAdmin().equals(myEmail)){
+                    if (recipe.getRecipeName().equals(recipeName) &&
+                            recipe.getRecipeAdmin().equals(myEmail)) {
                         recipes.add(recipeName);
                     }
                 }
 
-                ArrayAdapter<String> adapter =new ArrayAdapter<>(
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(
                         AddEvent.this,
                         android.R.layout.simple_list_item_1,
                         recipes

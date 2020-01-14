@@ -22,7 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class CurrentEvent extends AppCompatActivity {
-    private String eventName;
+    private String eventName, adminEmail;
     private ArrayList<String> recipeList;
     private TextView title;
     private ListView list;
@@ -38,6 +38,9 @@ public class CurrentEvent extends AppCompatActivity {
         final Intent intent = getIntent();
         eventName = intent.getStringExtra("name");
         recipeList = intent.getStringArrayListExtra("list");
+        adminEmail = intent.getStringExtra("admin");
+
+
 
         title = findViewById(R.id.textView8);
         title.setText(eventName);
@@ -63,12 +66,12 @@ public class CurrentEvent extends AppCompatActivity {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                         mAuth = FirebaseAuth.getInstance();
-                        final String myEmail = mAuth.getCurrentUser().getEmail();
+//                        final String myEmail = mAuth.getCurrentUser().getEmail();
                         recipes = new ArrayList<Recipe>();
 
                         for (DataSnapshot ds : dataSnapshot.getChildren()) {
                             Recipe recipe = ds.getValue(Recipe.class);
-                            if (recipe.getRecipeAdmin().equals(myEmail)) {
+                            if (recipe.getRecipeAdmin().equals(adminEmail)) {
                                 recipes.add(recipe);
                             }
                         }
@@ -77,7 +80,7 @@ public class CurrentEvent extends AppCompatActivity {
 
                         for(Recipe rec : recipes){
                             if(recipeList.get(i).equals(rec.getRecipeName())){
-                                if(rec.getRecipeAdmin().equals(myEmail)){
+                                if(rec.getRecipeAdmin().equals(adminEmail)){
                                     intent1.putExtra("name", rec.getRecipeName());
                                     intent1.putExtra("ing", rec.getIngredients());
                                     intent1.putExtra("dir", rec.getDirections());
