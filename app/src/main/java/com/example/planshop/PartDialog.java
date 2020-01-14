@@ -34,7 +34,6 @@ public class PartDialog extends AppCompatDialogFragment {
                 String email = editTextPart.getText().toString().trim();
                 if(!email.isEmpty()){
                     listener.applyText(email);
-
                 }
 
 

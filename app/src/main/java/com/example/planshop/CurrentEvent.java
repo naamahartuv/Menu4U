@@ -55,9 +55,49 @@ public class CurrentEvent extends AppCompatActivity {
 
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent1 = new Intent(CurrentEvent.this, CurrentRecipe.class);
-                creatRecipeList();
+            public void onItemClick(AdapterView<?> adapterView, View view, final int i, long l) {
+                refRecipe = FirebaseDatabase.getInstance().getReference("Recipes");
+
+                refRecipe.addValueEventListener(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        mAuth = FirebaseAuth.getInstance();
+                        final String myEmail = mAuth.getCurrentUser().getEmail();
+                        recipes = new ArrayList<Recipe>();
+
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            Recipe recipe = ds.getValue(Recipe.class);
+                            if (recipe.getRecipeAdmin().equals(myEmail)) {
+                                recipes.add(recipe);
+                            }
+                        }
+
+                        Intent intent1 = new Intent(CurrentEvent.this, CurrentRecipe.class);
+
+                        for(Recipe rec : recipes){
+                            if(recipeList.get(i).equals(rec.getRecipeName())){
+                                if(rec.getRecipeAdmin().equals(myEmail)){
+                                    intent1.putExtra("name", rec.getRecipeName());
+                                    intent1.putExtra("ing", rec.getIngredients());
+                                    intent1.putExtra("dir", rec.getDirections());
+
+                                    startActivity(intent1);
+                                }
+
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+
+
+
 
 //                intent1.putExtra("name" , )
             }
