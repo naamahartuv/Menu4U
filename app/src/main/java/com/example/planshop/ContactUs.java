@@ -7,14 +7,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 
-public class ActivitiesMenu extends AppCompatActivity {
+public class ContactUs extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_activities_menu);
+        setContentView(R.layout.activity_contact_us);
     }
 
     @Override
@@ -29,8 +28,6 @@ public class ActivitiesMenu extends AppCompatActivity {
 
         switch (item.getItemId()) {
             case R.id.item1:
-                Intent intent = new Intent(this, ActivitiesMenu.class);
-                startActivity(intent);
                 return true;
             case R.id.item2:
                 Intent intent2 = new Intent(this, ContactUs.class);
@@ -40,15 +37,5 @@ public class ActivitiesMenu extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
 
-    }
-
-    public void myEvent(View view) {
-        Intent intent = new Intent(this, AdminEventList.class);
-        startActivity(intent);
-    }
-
-    public void myRecipes (View view){
-        Intent intent = new Intent(this, AdminRecipes.class);
-        startActivity(intent);
     }
 }

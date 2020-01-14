@@ -3,6 +3,9 @@ package com.example.planshop;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -71,6 +74,33 @@ public class signUp extends AppCompatActivity {
                 registerNewUser();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Toast.makeText(getApplicationContext(),
+                        "Must sign in first",
+                        Toast.LENGTH_LONG)
+                        .show();
+                return true;
+            case R.id.item2:
+                Intent intent2 = new Intent(this, ContactUs.class);
+                startActivity(intent2);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
 

@@ -5,6 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -34,6 +37,31 @@ public class MemberEventList extends AppCompatActivity {
 
         listViewMemberEvent = findViewById(R.id.memberEventListView);
         showEventList();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.item1:
+                Intent intent = new Intent(this, MemberEventList.class);
+                startActivity(intent);
+                return true;
+            case R.id.item2:
+                Intent intent2 = new Intent(this, ContactUs.class);
+                startActivity(intent2);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+
     }
 
     public void showEventList(){
