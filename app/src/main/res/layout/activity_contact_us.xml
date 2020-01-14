@@ -24,14 +24,15 @@
 
     <TextView
         android:id="@+id/phonNumber"
-        android:layout_width="271dp"
-        android:layout_height="61dp"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="124dp"
-        android:text="054-4323897"
+        android:layout_width="340dp"
+        android:layout_height="138dp"
+        android:layout_marginTop="48dp"
+        android:fontFamily="@font/acme"
+        android:text="Having a problem? \n Call us"
+        android:textAlignment="center"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.18"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
@@ -45,6 +46,20 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/phonNumber" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/acme"
+        android:text="NAAMA"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_call" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
