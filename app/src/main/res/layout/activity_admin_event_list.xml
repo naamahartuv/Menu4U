@@ -26,13 +26,13 @@
         android:id="@+id/floatingActionButton"
         android:layout_width="58dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="48dp"
         android:clickable="true"
         android:onClick="addEvent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintBottom_toTopOf="@+id/adminEventListView"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.594"
         app:maxImageSize="40dp"
         app:srcCompat="@drawable/plus" />
 
