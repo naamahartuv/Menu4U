@@ -11,92 +11,87 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="185dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="63dp"
-        android:layout_marginBottom="17dp"
+        android:layout_height="82dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/indigo_daisy"
         android:text="New recipe"
         android:textColor="@color/colorAccent"
         android:textSize="58sp"
-        app:layout_constraintBottom_toTopOf="@+id/editText"
-        app:layout_constraintEnd_toEndOf="@+id/editText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="שם המתכון"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/creatRecipeButton"
-        app:layout_constraintStart_toStartOf="@+id/creatRecipeButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.717"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="115dp"
-        android:layout_marginBottom="11dp"
+        android:layout_width="101dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="20dp"
         android:text=":רשימת מצרכים"
-        app:layout_constraintBottom_toBottomOf="@+id/creatRecipeButton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/creatRecipeButton" />
+        app:layout_constraintHorizontal_bias="0.819"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText" />
 
     <TextView
         android:id="@+id/textView6"
-        android:layout_width="70dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="20dp"
+        android:layout_width="72dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="28dp"
         android:text=":אופן הכנה"
-        app:layout_constraintBottom_toTopOf="@+id/editText3"
-        app:layout_constraintEnd_toEndOf="@+id/editText3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.834"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText2" />
 
     <Button
         android:id="@+id/creatRecipeButton"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="134dp"
-        android:layout_marginEnd="19dp"
-        android:layout_marginBottom="9dp"
+        android:layout_width="124dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
         android:background="@color/colorAccent"
         android:onClick="creatRecpie"
         android:text="creat recipe"
-        app:layout_constraintBottom_toTopOf="@+id/editText2"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
 
     <EditText
         android:id="@+id/editText2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="283dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toTopOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/creatRecipeButton" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
         android:id="@+id/editText3"
         android:layout_width="278dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="160dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
