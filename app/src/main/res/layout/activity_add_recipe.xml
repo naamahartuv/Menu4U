@@ -11,13 +11,15 @@
     <TextView
         android:id="@+id/title"
         android:layout_width="185dp"
-        android:layout_height="65dp"
+        android:layout_height="0dp"
         android:layout_marginStart="48dp"
         android:layout_marginTop="36dp"
+        android:layout_marginBottom="81dp"
         android:fontFamily="@font/indigo_daisy"
         android:text="New recipe"
         android:textColor="@color/colorAccent"
         android:textSize="58sp"
+        app:layout_constraintBottom_toTopOf="@+id/creatRecipeButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.286"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,9 +43,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="64dp"
         android:text=":רשימת מצרכים"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.799"
+        app:layout_constraintStart_toEndOf="@+id/creatRecipeButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editText" />
 
@@ -60,16 +64,18 @@
 
     <Button
         android:id="@+id/creatRecipeButton"
-        android:layout_width="102dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginEnd="109dp"
+        android:layout_marginBottom="513dp"
         android:background="@color/colorAccent"
         android:onClick="creatRecpie"
         android:text="creat recipe"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/title" />
 
     <EditText
         android:id="@+id/editText2"
