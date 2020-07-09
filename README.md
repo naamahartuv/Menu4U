@@ -1,4 +1,4 @@
-<div dir="rtl">
+<div dir="ltr">
 
 # Menu4U application
 # creating by Michal Yalkin Yael Hava and Naama Hartuv
