@@ -10,11 +10,11 @@ The system is designed for families, catering owners, owners of banqueting halls
 
 Homepage:
 
-![](gitHubPicture/1.jpeg)
+![](1.jpeg)
 
 Event list that include the recipes:
 
-![](gitHubPicture/2.jpeg)
+![](2.jpeg)
 
 
 
