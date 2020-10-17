@@ -1,7 +1,7 @@
 <div dir="ltr">
 
 # Menu4U application
-# creating by Michal Yalkin Yael Hava and Naama Hartuv
+## creating by Michal Yalkin, Yael Hava and Naama Hartuv
 
 A collaborative app that builds an event based on recipes.
 The purpose of the app is to build an event that contains a collection of recipes that can be shared with other parties, which they can review at any time. 
